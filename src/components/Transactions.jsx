@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const Transactions = ({ transactions, setTransactions }) => {
+    const [show, setShow] = useState({}); // added this to give option to hide / show details of transaction
     if (transactions.length === 0) return null; // transactions is an array of objects - if no objects then should return null
   return (
     <section>
@@ -9,7 +10,14 @@ const Transactions = ({ transactions, setTransactions }) => {
         (
         <div key={id}>
             <h3>{itemName} - price: ${costPerItemInDollars.toFixed(2)}</h3>
-            Total Cost: {(amount*costPerItemInDollars).toFixed(2)}
+            <ul>
+                <li>
+                    Total Cost: {(amount*costPerItemInDollars).toFixed(2)}
+                </li>
+                <li>Date of Transaction: {date}</li>
+                <li>Store: {from}</li>
+                <li>Category: {category}</li>
+            </ul>
         </div>
         ))}
     </section>
