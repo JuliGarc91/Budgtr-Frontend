@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-
-import Transactions from './components/Transactions';
 import './App.css'
+import Transactions from './components/Transactions';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
@@ -14,7 +13,7 @@ function App() {
 
   return (
     <section>
-      {console.log(transactions)}
+      <Transactions transactions={transactions} setTransactions={setTransactions}/>
     </section>
   )
 }
