@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import "../App.css"
 import TransactionDetails from './TransactionDetails';
 
-const EditTransaction = ({ setTransactions, setToggleForm, edit, setEdit }) => {
+const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
     const [transaction, setTransaction]=useState({
         itemName: "",
         amount: 0,
@@ -127,4 +127,4 @@ const EditTransaction = ({ setTransactions, setToggleForm, edit, setEdit }) => {
   )
 }
 
-export default EditTransaction
+export default TransactionForm;
