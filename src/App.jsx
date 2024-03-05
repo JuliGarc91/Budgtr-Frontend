@@ -4,6 +4,8 @@ import './App.css'
 import Transactions from './components/Transactions';
 import TransactionDetails from './components/TransactionDetails';
 import TransactionForm from './components/TransactionForm';
+import NavBar from './components/static/NavBar';
+import Home from './components/static/Home';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
@@ -23,11 +25,13 @@ function App() {
       .then((data) => setTransactions(data.transactions));
   },[])
 
-  const isVisible = !(edit.show || toggleForm);
+  // const isVisible = !(edit.show || toggleForm);
 
   return (
     <section>
+      <NavBar />
       <Routes>
+        <Route path="/" element={<Home />}/>
         {/* index */}
         <Route path="/transactions" element=
         
@@ -37,8 +41,8 @@ function App() {
         {/* Form on same page */}
         <div>
           {!toggleForm && 
-          <button onClick={() => setToggleForm(true)} style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
-            Add Transaction
+          <button onClick={() => setToggleForm(true)}>
+            Add New Transaction
           </button>}
           { (edit.show || toggleForm) && <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} /> }
         </div>
