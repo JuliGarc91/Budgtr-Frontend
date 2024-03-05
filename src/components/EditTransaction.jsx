@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import "../App.css"
 import TransactionDetails from './TransactionDetails';
 
-const EditTransaction = ({ setTransactions, setToggleForm }) => {
+const EditTransaction = ({ setTransactions, setToggleForm, edit, setEdit }) => {
     const [transaction, setTransaction]=useState({
         itemName: "",
         amount: 0,
@@ -16,10 +16,50 @@ const EditTransaction = ({ setTransactions, setToggleForm }) => {
       setTransaction({ ...transaction, [event.target.id]: event.target.value })
     }
 
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      if (edit.show) {
+        const options = {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(transaction),
+        };
+        fetch(`http://localhost:8888/transactions/${edit.id}`, options)
+          .then((res) => res.json())
+          .then((data)=> setTransaction(data.transactions))
+          .then(() => setToggleForm(false))
+          .then(() => setEdit({ show:false, id: null }));
+      } else {
+        const options = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(transaction),
+        };
+        fetch('http://localhost:8888/transactions/', options)
+          .then((res) => res.json())
+          .then((data) => setTransactions(data.transactions))
+          .then(() => setToggleForm(false))
+          .then(() => setEdit({ show: false, id: null }));
+      }
+    };
+
+    const handleCancel = () => {
+      setEdit({ show:false, id: null });
+      setToggleForm(false);
+    }
+
+    useEffect(()=> {
+      if (edit.show) {
+        fetch(`http://localhost:8888/transactions/${edit.id}`)
+        .then((res) => res.json())
+        .then((data)=> setTransaction(data));
+      }
+    }, [edit.id]);
+
   return (
     <section>
       <h2>Edit Transaction:</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="itemName">
           Item Name:
           <input
@@ -80,6 +120,8 @@ const EditTransaction = ({ setTransactions, setToggleForm }) => {
             onChange={handleChange}
           />
         </label>
+        <button type="submit">Submit</button>
+        <button onClick={handleCancel}>Cancel</button>
       </form>
     </section>
   )

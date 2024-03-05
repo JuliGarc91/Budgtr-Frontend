@@ -15,6 +15,7 @@ function App() {
     show: false,
     id: null
   })
+  const [edit, setEdit] = useState({ show: false, id: null })
 
   useEffect(() => {
     fetch("http://localhost:8888/transactions/")
