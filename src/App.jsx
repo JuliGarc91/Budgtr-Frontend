@@ -29,11 +29,30 @@ function App() {
     <section>
       <Routes>
         {/* index */}
-        <Route path="/transactions" element={<Transactions transactions={transactions} setTransactions={setTransactions} setToggleDetails={setToggleDetails}/>}/>
+        <Route path="/transactions" element=
+        
+        {<section>
+        
+        
+        {/* Form on same page */}
+        <div>
+          {!toggleForm && 
+          <button onClick={() => setToggleForm(true)} style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
+            Add Transaction
+          </button>}
+          { (edit.show || toggleForm) && <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} /> }
+        </div>
+
+        <Transactions transactions={transactions} setTransactions={setTransactions} setToggleDetails={setToggleDetails} edit={edit} setEdit={setEdit}/>
+        
+        </section>
+      }/>
+        
         {/* show one */}
         <Route path="/transactions/:id" element={<TransactionDetails toggleDetails={toggleDetails}/>}/>
         {/* edit one */}
-        <Route path="edit/transactions/:id" element={toggleForm && <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit}/>}/>
+        <Route path="edit/transactions/:id" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit}/>}/>
+        <Route path="new/transactions/" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit}/>}/>
       </Routes>
     </section>
   )

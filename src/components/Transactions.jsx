@@ -45,6 +45,7 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails }) => {
             <button onClick={()=>handleShowDetails(id)}>{show[id] ? 'Hide Details' : 'Show Details'}</button>
             <button onClick={() => navigateToDetails(id)}>Go To Details</button>
             <button onClick={()=>deleteTransaction(id)}>Delete</button>
+            <button onClick={()=> setEdit({ show: true, id })}>Edit Transaction</button>
         </div>
         ))}
     </section>

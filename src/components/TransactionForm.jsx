@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 import "../App.css"
 import TransactionDetails from './TransactionDetails';
 
@@ -58,7 +59,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
 
   return (
     <section>
-      <h2>Edit Transaction:</h2>
+      <h2>Transaction Form:</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="itemName">
           Item Name:
