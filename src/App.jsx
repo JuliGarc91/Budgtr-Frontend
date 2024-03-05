@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css'
 import Transactions from './components/Transactions';
 import TransactionDetails from './components/TransactionDetails';
+import EditTransaction from './components/EditTransaction';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
@@ -10,6 +11,10 @@ function App() {
     show: false,
     id: null
   });
+  const [toggleForm, setToggleForm] = useState({
+    show: false,
+    id: null
+  })
 
   useEffect(() => {
     fetch("http://localhost:8888/transactions/")
@@ -24,6 +29,8 @@ function App() {
         <Route path="/transactions" element={<Transactions transactions={transactions} setTransactions={setTransactions} setToggleDetails={setToggleDetails}/>}/>
         {/* show one */}
         <Route path="/transactions/:id" element={<TransactionDetails toggleDetails={toggleDetails}/>}/>
+        {/* edit one */}
+        <Route path="edit/transactions/:id" element={toggleForm && <EditTransaction setTransactions={setTransactions} setToggleForm={setToggleForm}/>}/>
       </Routes>
     </section>
   )
