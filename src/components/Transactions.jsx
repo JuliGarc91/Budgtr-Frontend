@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Transactions = ({ transactions, setTransactions, setToggleDetails }) => {
+const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit }) => {
     const [show, setShow] = useState({}); // added this to give option to hide / show details of transaction
     const navigate = useNavigate();
 
