@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css'
 import Transactions from './components/Transactions';
 import TransactionDetails from './components/TransactionDetails';
@@ -18,8 +19,12 @@ function App() {
 
   return (
     <section>
-      <Transactions transactions={transactions} setTransactions={setTransactions}/>
-      {toggleDetails.show && <TransactionDetails toggleDetails={toggleDetails}/>}
+      <Routes>
+        {/* index */}
+        <Route path="/transactions" element={<Transactions transactions={transactions} setTransactions={setTransactions}/>} />
+        {/* show one */}
+        <Route path="/transactions/:id" element={toggleDetails.show && <TransactionDetails toggleDetails={toggleDetails}/>} />
+      </Routes>
     </section>
   )
 }
