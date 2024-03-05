@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Transactions = ({ transactions, setTransactions }) => {
+const Transactions = ({ transactions, setTransactions, setToggleDetails }) => {
     const [show, setShow] = useState({}); // added this to give option to hide / show details of transaction
+    const navigate = useNavigate();
+
     if (transactions.length === 0) return null; // transactions is an array of objects - if no objects then should return null
     const deleteTransaction = (id) => {
         const options = {
@@ -16,6 +19,12 @@ const Transactions = ({ transactions, setTransactions }) => {
             ...currentState, [id]: !currentState[id]
         }));
     };
+
+    const navigateToDetails = (id) => {
+        setToggleDetails({ show: true, id });
+        navigate(`/transactions/${id}`);
+    };
+
   return (
     <section>
         <h1>Transactions Index</h1>
@@ -34,6 +43,7 @@ const Transactions = ({ transactions, setTransactions }) => {
             </ul>
             )}
             <button onClick={()=>handleShowDetails(id)}>{show[id] ? 'Hide Details' : 'Show Details'}</button>
+            <button onClick={() => navigateToDetails(id)}>Go To Details</button>
             <button onClick={()=>deleteTransaction(id)}>Delete</button>
         </div>
         ))}

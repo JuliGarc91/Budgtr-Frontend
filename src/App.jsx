@@ -21,9 +21,9 @@ function App() {
     <section>
       <Routes>
         {/* index */}
-        <Route path="/transactions" element={<Transactions transactions={transactions} setTransactions={setTransactions}/>} />
+        <Route path="/transactions" element={<Transactions transactions={transactions} setTransactions={setTransactions} setToggleDetails={setToggleDetails}/>}/>
         {/* show one */}
-        <Route path="/transactions/:id" element={toggleDetails.show && <TransactionDetails toggleDetails={toggleDetails}/>} />
+        <Route path="/transactions/:id" element={<TransactionDetails toggleDetails={toggleDetails}/>}/>
       </Routes>
     </section>
   )
