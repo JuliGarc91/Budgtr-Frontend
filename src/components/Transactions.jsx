@@ -3,6 +3,14 @@ import { useState } from "react";
 const Transactions = ({ transactions, setTransactions }) => {
     const [show, setShow] = useState({}); // added this to give option to hide / show details of transaction
     if (transactions.length === 0) return null; // transactions is an array of objects - if no objects then should return null
+    const deleteTransaction = (id) => {
+        const options = {
+            method: "DELETE",
+        };
+        fetch(`http://localhost:8888/transactions/${id}`, options)
+        .then((res) => res.json())
+        .then((data)=> setTransactions(data.transactions));
+    };
     const handleShowDetails = (id) => {
         setShow(currentState =>({
             ...currentState, [id]: !currentState[id]
@@ -26,6 +34,7 @@ const Transactions = ({ transactions, setTransactions }) => {
             </ul>
             )}
             <button onClick={()=>handleShowDetails(id)}>{show[id] ? 'Hide Details' : 'Show Details'}</button>
+            <button onClick={()=>deleteTransaction(id)}>Delete</button>
         </div>
         ))}
     </section>
