@@ -1,8 +1,20 @@
-import React from 'react'
-
 const Home = () => {
+
   return (
-    <div>Home</div>
+    <section>Home
+        <h2>Total Amount Spent: $</h2>
+        <h2>Total Funds Left: $</h2>
+        <form>
+            <label htmlFor="totalFunds">
+                Total Funds: $
+            </label>
+            <input
+                type="number"
+                name="totalFunds"
+                id="totalFunds"
+            />
+        </form>
+    </section>
   )
 }
 
