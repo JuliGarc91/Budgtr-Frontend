@@ -12,6 +12,10 @@ const EditTransaction = ({ setTransactions, setToggleForm }) => {
         category: "",
     });
 
+    const handleChange = (event) => {
+      setTransaction({ ...transaction, [event.target.id]: event.target.value })
+    }
+
   return (
     <section>
       <h2>Edit Transaction:</h2>
@@ -23,6 +27,7 @@ const EditTransaction = ({ setTransactions, setToggleForm }) => {
             id="itemName"
             name="itemName"
             value={transaction.itemName}
+            onChange={handleChange}
           />
         </label>
         <label htmlFor="amount">
@@ -32,6 +37,7 @@ const EditTransaction = ({ setTransactions, setToggleForm }) => {
             id="amount"
             name="amount"
             value={transaction.amount}
+            onChange={handleChange}
           />
         </label>
         <label htmlFor="costPerItemInDollars">
@@ -41,6 +47,7 @@ const EditTransaction = ({ setTransactions, setToggleForm }) => {
             id="costPerItemInDollars"
             name="costPerItemInDollars"
             value={transaction.costPerItemInDollars}
+            onChange={handleChange}
           />
         </label>
         <label htmlFor="date">
@@ -50,6 +57,7 @@ const EditTransaction = ({ setTransactions, setToggleForm }) => {
           id="date"
           name="date"
           value={transaction.date}
+          onChange={handleChange}
         />
         </label>
         <label htmlFor="from">
@@ -59,6 +67,7 @@ const EditTransaction = ({ setTransactions, setToggleForm }) => {
             id="from"
             name="from"
             value={transaction.from}
+            onChange={handleChange}
           />
         </label>
         <label htmlFor="category">
@@ -68,6 +77,7 @@ const EditTransaction = ({ setTransactions, setToggleForm }) => {
             id="category"
             name="category"
             value={transaction.category}
+            onChange={handleChange}
           />
         </label>
       </form>
