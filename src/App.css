@@ -16,6 +16,15 @@ header {
   background-color: rgb(106, 255, 131);
 }
 
+nav {
+  margin-bottom: 2%;
+}
+
+.title-header {
+  font-size: 4rem;
+  font-family: Courier;
+}
+
 ul, li {
   list-style: none;
   padding: .5% 0% .5% 0%;
@@ -37,18 +46,33 @@ form {
   width: min-content;
   justify-content: center;
   align-items: center;
-  /* text-align: center; */
   gap: 1rem;
 }
 
 button {
   background-color: rgb(148, 255, 166);
-  /* padding: 1.5% 1.5% 1.5% 1.5%; */
   font-size: 1rem;
   font-family: monospace;
-  /* border-radius: 0.25rem; */
   font-weight: 700;
   margin-bottom: 1%;
   border: none;
   display: inline-flex;
+}
+
+input[type="text"] {
+  padding: 1%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type="number"] {
+  padding: 1%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 0.2rem;
+}
+
+input[type="text"],
+input[type="number"] {
+  margin-bottom: 0.5rem;
 }
