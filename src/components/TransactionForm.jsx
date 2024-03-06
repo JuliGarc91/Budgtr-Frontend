@@ -30,6 +30,14 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
           .then((data)=> setTransaction(data.transactions))
           .then(() => setToggleForm(false))
           .then(() => setEdit({ show:false, id: null }));
+          setTransaction({
+            itemName: "",
+            amount: 0,
+            costPerItemInDollars: 0,
+            date: "",
+            from: "",
+            category: "",
+        });
       } else {
         const options = {
           method: "POST",
@@ -41,6 +49,14 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
           .then((data) => setTransactions(data.transactions))
           .then(() => setToggleForm(false))
           .then(() => setEdit({ show: false, id: null }));
+          setTransaction({
+            itemName: "",
+            amount: 0,
+            costPerItemInDollars: 0,
+            date: "",
+            from: "",
+            category: "",
+        });
       }
     };
 
@@ -69,6 +85,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
             name="itemName"
             value={transaction.itemName}
             onChange={handleChange}
+            required
           />
         </label>
         <label htmlFor="amount">
@@ -79,6 +96,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
             name="amount"
             value={transaction.amount}
             onChange={handleChange}
+            required
           />
         </label>
         <label htmlFor="costPerItemInDollars">
@@ -89,6 +107,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
             name="costPerItemInDollars"
             value={transaction.costPerItemInDollars}
             onChange={handleChange}
+            required
           />
         </label>
         <label htmlFor="date">

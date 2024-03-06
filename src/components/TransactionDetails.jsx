@@ -15,10 +15,10 @@ const TransactionDetails = ({ toggleDetails }) => {
     if (!transaction) return null;
   return (
     <section>
-        <h3>{transaction.itemName} - price: ${transaction.costPerItemInDollars.toFixed(2)}</h3>
+        <h3>{transaction.itemName} - price: ${transaction.costPerItemInDollars}</h3>
             <ul>
                 <li>
-                    Total Cost: {(transaction.amount* transaction.costPerItemInDollars).toFixed(2)}
+                    Total Cost: ${(transaction.amount* transaction.costPerItemInDollars)}
                 </li>
                 <li>Date of Transaction: {transaction.date}</li>
                 <li>Store: {transaction.from}</li>
