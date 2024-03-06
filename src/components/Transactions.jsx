@@ -31,9 +31,7 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
 
   return (
     <section>
-        {/* <h1>Transactions Index</h1>
-        <h2>Total Amount Spent: ${totalSpent}</h2>
-        <h2>Total Funds Left: $</h2> */}
+        
         {transactions.map(({ id, itemName, amount, costPerItemInDollars, date, from, category })=>
         (
         <div key={id}>

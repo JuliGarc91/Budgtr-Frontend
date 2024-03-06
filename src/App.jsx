@@ -6,6 +6,7 @@ import TransactionDetails from './components/TransactionDetails';
 import TransactionForm from './components/TransactionForm';
 import NavBar from './components/static/NavBar';
 import Home from './components/static/Home';
+import Totals from './components/Totals';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
@@ -34,6 +35,7 @@ function App() {
         <Route path="/transactions" element=
           {<section>
           {/* Form on same view as index */}
+          <Totals transactions={transactions}/>
             <div>
               {!toggleForm && 
               <button onClick={() => setToggleForm(true)}>

@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom"
-import Home from "./Home"
+import { Link } from "react-router-dom";
 import Header from "./Header";
 
 const NavBar = () => {
