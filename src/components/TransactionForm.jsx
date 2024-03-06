@@ -58,7 +58,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
     }, [edit.id]);
 
   return (
-    <section>
+    <section >
       <h2>Transaction Form:</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="itemName">

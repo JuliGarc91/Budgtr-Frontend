@@ -25,10 +25,6 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
         navigate(`/transactions/${id}`);
     };
 
-    // const totalSpent = transactions.reduce((acc, curr) => {
-    //     return acc + (curr.costPerItemInDollars * curr.amount)
-    // }, 0);
-
   return (
     <section>
         

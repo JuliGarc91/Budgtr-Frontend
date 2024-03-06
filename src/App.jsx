@@ -33,9 +33,10 @@ function App() {
         <Route path="/" element={<Home transactions={transactions}/>}/>
         {/* index route */}
         <Route path="/transactions" element=
-          {<section>
+          {<section className='transactions-section'>
+          {/* Show All (Index) */}
+          <Transactions transactions={transactions} setTransactions={setTransactions} setToggleDetails={setToggleDetails} edit={edit} setEdit={setEdit}/>
           {/* Form on same view as index */}
-          <Totals transactions={transactions}/>
             <div>
               {!toggleForm && 
               <button onClick={() => setToggleForm(true)}>
@@ -43,9 +44,7 @@ function App() {
               </button>}
               { (edit.show || toggleForm) && <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} /> }
             </div>
-
-            {/* Show All (Index) */}
-            <Transactions transactions={transactions} setTransactions={setTransactions} setToggleDetails={setToggleDetails} edit={edit} setEdit={setEdit}/>
+          <Totals transactions={transactions}/>
           </section>
       }/>
         

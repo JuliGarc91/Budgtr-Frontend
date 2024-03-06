@@ -2,10 +2,9 @@ import Totals from "../Totals";
 
 const Home = ({ transactions }) => {
   return (
-    <section>
-      Home
+    <div>
       <Totals transactions={transactions}/>
-    </section>
+    </div>
   )
 }
 

@@ -1,11 +1,42 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+  text-align: center;
+} */
+
+/* section {
+  flex-direction: column;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+} */
+body {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
 ul, li {
   list-style: none;
   padding: .5% 0% .5% 0%;
+}
+.transactions-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+form {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  gap: 1rem;
 }

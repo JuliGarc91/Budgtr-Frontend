@@ -16,7 +16,7 @@ const Totals = ({ transactions }) => {
         setResult(fundsLeft)
     }
   return (
-    <section>
+    <div>
           <label htmlFor="funds">
             <h2>Total Funds: $
             <input
@@ -29,7 +29,7 @@ const Totals = ({ transactions }) => {
           </label>
         <h2>Total Amount Spent: ${totalSpent}</h2>
         <h2>Total Funds Left: ${result}</h2>
-    </section>
+    </div>
   )
 }
 
