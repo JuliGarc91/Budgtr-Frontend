@@ -25,15 +25,15 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
         navigate(`/transactions/${id}`);
     };
 
-    const totalSpent = transactions.reduce((acc, curr) => {
-        return acc + (curr.costPerItemInDollars * curr.amount)
-    }, 0);
+    // const totalSpent = transactions.reduce((acc, curr) => {
+    //     return acc + (curr.costPerItemInDollars * curr.amount)
+    // }, 0);
 
   return (
     <section>
-        <h1>Transactions Index</h1>
+        {/* <h1>Transactions Index</h1>
         <h2>Total Amount Spent: ${totalSpent}</h2>
-        <h2>Total Funds Left: $</h2>
+        <h2>Total Funds Left: $</h2> */}
         {transactions.map(({ id, itemName, amount, costPerItemInDollars, date, from, category })=>
         (
         <div key={id}>
