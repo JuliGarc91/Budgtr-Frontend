@@ -118,6 +118,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
           name="date"
           value={transaction.date}
           onChange={handleChange}
+          required
         />
         </label>
         <label htmlFor="from">
@@ -128,6 +129,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
             name="from"
             value={transaction.from}
             onChange={handleChange}
+            required
           />
         </label>
         <label htmlFor="category">
@@ -138,6 +140,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
             name="category"
             value={transaction.category}
             onChange={handleChange}
+            required
           />
         </label>
         <button type="submit">Submit</button>
