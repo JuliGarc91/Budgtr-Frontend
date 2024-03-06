@@ -76,3 +76,17 @@ input[type="text"],
 input[type="number"] {
   margin-bottom: 0.5rem;
 }
+
+/* for the available funds part */
+
+.greenish {
+  color: green;
+}
+
+.yellowish {
+  color: yellow;
+}
+
+.reddish {
+  color: red;
+}

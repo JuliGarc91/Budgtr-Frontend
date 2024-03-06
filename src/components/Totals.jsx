@@ -28,7 +28,9 @@ const Totals = ({ transactions }) => {
             /></h2>
           </label>
         <h2>Total Amount Spent: ${totalSpent}</h2>
-        <h2>Total Funds Left: ${result}</h2>
+        <h2 className={result > 100 ? "greenish" : result >= 0 ? "yellowish" : "reddish"}>
+            Total Funds Left: ${result}
+        </h2>
     </div>
   )
 }
