@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "../App.css"
-import TransactionDetails from './TransactionDetails';
 
 const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
+
+  const navigate = useNavigate();
+
     const [transaction, setTransaction]=useState({
         itemName: "",
         amount: 0,
@@ -27,17 +29,12 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
         };
         fetch(`http://localhost:8888/transactions/${edit.id}`, options)
           .then((res) => res.json())
-          .then((data)=> setTransaction(data.transactions))
-          .then(() => setToggleForm(false))
-          .then(() => setEdit({ show:false, id: null }));
-          setTransaction({
-            itemName: "",
-            amount: 0,
-            costPerItemInDollars: 0,
-            date: "",
-            from: "",
-            category: "",
-        });
+          .then(() => {
+            setToggleForm(false);
+            setEdit({ show: false, id: null });
+            navigate(`/transactions/${edit.id}`); // Redirect to Show page
+          })
+          .catch(error => console.error('Error:', error));
       } else {
         const options = {
           method: "POST",
@@ -46,20 +43,23 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
         };
         fetch('http://localhost:8888/transactions/', options)
           .then((res) => res.json())
-          .then((data) => setTransactions(data.transactions))
-          .then(() => setToggleForm(false))
-          .then(() => setEdit({ show: false, id: null }));
-          setTransaction({
-            itemName: "",
-            amount: 0,
-            costPerItemInDollars: 0,
-            date: "",
-            from: "",
-            category: "",
-        });
+          .then(() => {
+            setToggleForm(false);
+            setEdit({ show: false, id: null });
+            setTransaction({
+              itemName: "",
+              amount: 0,
+              costPerItemInDollars: 0,
+              date: "",
+              from: "",
+              category: "",
+            });
+            navigate(`/transactions`); // Redirect to main page
+          })
+          .catch(error => console.error('Error:', error));
       }
     };
-
+    
     const handleCancel = () => {
       setEdit({ show:false, id: null });
       setToggleForm(false);
@@ -69,7 +69,8 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
       if (edit.show) {
         fetch(`http://localhost:8888/transactions/${edit.id}`)
         .then((res) => res.json())
-        .then((data)=> setTransaction(data));
+        .then((data)=> setTransaction(data))
+        .catch(error => console.error('Error:', error));
       }
     }, [edit.id]);
 
