@@ -43,11 +43,13 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
         };
         fetch('http://localhost:8888/transactions/', options)
           .then((res) => res.json())
-          .then((data) =>
-            setTransactions(data.transactions))
+          .then((data) => {
+            setTransaction(data.transactions)
             setToggleForm(false);
             setEdit({ show: false, id: null })
-          .catch(error => console.error('Error:', error))
+          })
+          .then(() => navigate(`/transactions`))
+          .catch(error => console.error('Error:', error));
       }
     };
     

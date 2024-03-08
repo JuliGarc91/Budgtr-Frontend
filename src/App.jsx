@@ -51,9 +51,9 @@ function App() {
         {/* Show One Route*/}
         <Route path="/transactions/:id" element={<TransactionDetails toggleDetails={toggleDetails}/>}/>
         {/* Edit One Route */}
-        <Route path="edit/transactions/:id" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit}       setEdit={setEdit}/>}/>
+        <Route path="edit/transactions/:id" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit}       setEdit={setEdit} transactions={transactions}/>}/>
         {/* Create New Route */}
-        <Route path="new/transactions/" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit}/>}/>
+        <Route path="new/transactions/" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions}/>}/>
       </Routes>
     </section>
   )
