@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import "../App.css"
 
-const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
+const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transactions }) => {
 
   const navigate = useNavigate();
 
@@ -29,10 +29,10 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
         };
         fetch(`http://localhost:8888/transactions/${edit.id}`, options)
           .then((res) => res.json())
-          .then(() => {
+          .then((data) => {
+            setTransaction(data.transactions)
             setToggleForm(false);
             setEdit({ show: false, id: null });
-            navigate(`/transactions/${edit.id}`); // Redirect to Show page
           })
           .catch(error => console.error('Error:', error));
       } else {
@@ -43,20 +43,11 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit }) => {
         };
         fetch('http://localhost:8888/transactions/', options)
           .then((res) => res.json())
-          .then(() => {
+          .then((data) =>
+            setTransactions(data.transactions))
             setToggleForm(false);
-            setEdit({ show: false, id: null });
-            setTransaction({
-              itemName: "",
-              amount: 0,
-              costPerItemInDollars: 0,
-              date: "",
-              from: "",
-              category: "",
-            });
-            navigate(`/transactions`); // Redirect to main page
-          })
-          .catch(error => console.error('Error:', error));
+            setEdit({ show: false, id: null })
+          .catch(error => console.error('Error:', error))
       }
     };
     

@@ -8,7 +8,7 @@ const NavBar = () => {
     <nav>
         <Link to="/">Home |</Link>
         <Link to="/transactions"> View All Transactions |</Link>
-        <Link to="/new/transactions/"> Navigate to Transaction Form</Link>
+        <Link to="/new/transactions/"> New Transaction Form</Link>
     </nav>
     </>
   )

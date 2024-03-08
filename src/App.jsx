@@ -42,7 +42,7 @@ function App() {
               <button onClick={() => setToggleForm(true)}>
                 Add New Transaction
               </button>}
-              { (edit.show || toggleForm) && <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} /> }
+              { (edit.show || toggleForm) && <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} /> }
             </div>
           <Totals transactions={transactions}/>
           </section>

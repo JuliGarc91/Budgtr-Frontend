@@ -12,8 +12,13 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
         };
         fetch(`http://localhost:8888/transactions/${id}`, options)
         .then((res) => res.json())
-        .then((data)=> setTransactions(data.transactions));
+        .then((data)=> setTransactions(data.transactions))
+        .catch((error) => {
+            console.error('Error deleting transaction:', error.message);
+            // Handle error (e.g., display error message to user)
+        });
     };
+
     const handleShowDetails = (id) => {
         setShow(currentState =>({
             ...currentState, [id]: !currentState[id]
@@ -44,8 +49,8 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
             )}
             <button onClick={()=>handleShowDetails(id)}>{show[id] ? 'Hide Details |' : 'Show Details |'}</button>
             <button onClick={() => navigateToDetails(id)}> Go To Details |</button>
-            <button onClick={()=>deleteTransaction(id)}> Delete |</button>
-            <button onClick={()=> setEdit({ show: true, id })}> Edit Transaction</button>
+            <button onClick={()=> setEdit({ show: true, id })}> Edit Transaction |</button>
+            <button onClick={()=>deleteTransaction(id)}className="delete-btn"> Delete </button>
         </div>
         ))}
     </section>
