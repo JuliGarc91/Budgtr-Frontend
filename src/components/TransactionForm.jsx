@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import "../App.css"
 
 const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transactions }) => {
 
   const navigate = useNavigate();
+  const location = useLocation();
 
     const [transaction, setTransaction]=useState({
         itemName: "",
