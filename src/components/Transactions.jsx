@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit }) => {
-    const [show, setShow] = useState({}); // added this to give option to hide / show details of transaction
     const navigate = useNavigate();
 
     if (transactions.length === 0) return null; // transactions is an array of objects - if no objects then should return null
@@ -19,14 +18,8 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
         });
     };
 
-    const handleShowDetails = (id) => {
-        setShow(currentState =>({
-            ...currentState, [id]: !currentState[id]
-        }));
-    };
-
     const navigateToDetails = (id) => {
-        setToggleDetails({ show: true, id });
+        // setToggleDetails({ show: true, id });
         navigate(`/transactions/${id}`);
     };
 
@@ -37,19 +30,16 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
         (
         <div key={id}>
             <h3>{itemName} - price: ${costPerItemInDollars}</h3>
-            {show[id] && (
-            <ul>
-                <li>
-                    Total Cost: {(amount*costPerItemInDollars).toFixed(2)}
-                </li>
-                <li>Date of Transaction: {date}</li>
-                <li>Store: {from}</li>
-                <li>Category: {category}</li>
-            </ul>
-            )}
-            <button onClick={()=>handleShowDetails(id)}>
-                {show[id] ? '| Hide Details |' : '| Show Details |'}
-            </button>
+            {
+            // <ul>
+            //     <li>
+            //         Total Cost: {(amount*costPerItemInDollars).toFixed(2)}
+            //     </li>
+            //     <li>Date of Transaction: {date}</li>
+            //     <li>Store: {from}</li>
+            //     <li>Category: {category}</li>
+            // </ul>
+            }
             <button onClick={() => navigateToDetails(id)}>
                  Go To Details |
             </button>

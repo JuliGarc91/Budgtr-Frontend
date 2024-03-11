@@ -37,13 +37,13 @@ function App() {
           {/* Show All (Index) */}
           <Transactions transactions={transactions} setTransactions={setTransactions} setToggleDetails={setToggleDetails} edit={edit} setEdit={setEdit}/>
           {/* Form on same view as index */}
-            {/* <div>
+            <div>
               {!toggleForm && 
               <button onClick={() => setToggleForm(true)}>
                 Add New Transaction
               </button>}
               { (edit.show || toggleForm) && <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} /> }
-            </div> */}
+            </div>
           <Totals transactions={transactions}/>
           </section>
       }/>
@@ -51,12 +51,9 @@ function App() {
         {/* Show One Route*/}
         <Route path="/transactions/:id" element={<TransactionDetails toggleDetails={toggleDetails}/>}/>
         {/* Edit One Route */}
-        <Route path="edit/:id" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit}       setEdit={setEdit} transactions={transactions}/>}/>
+        <Route path="edit/transactions/:id" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit}       setEdit={setEdit} transactions={transactions}/>}/>
         {/* Create New Route */}
-        <Route path="new/" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions}/>}/>
-        {/* <Route
-        path="*"
-        element={<Navigate to="/" replace />}/> */}
+        <Route path="new/transactions/" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions}/>}/>
       </Routes>
     </section>
   )
