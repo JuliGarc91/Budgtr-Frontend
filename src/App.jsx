@@ -19,12 +19,14 @@ function App() {
     id: null
   });
   const [edit, setEdit] = useState({ show: false, id: null });
+  const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
+    console.log('useEffect fetch transactions');
     fetch("http://localhost:8888/transactions/")
       .then((res) => res.json())
       .then((data) => setTransactions(data.transactions));
-  },[]);
+  },[trigger]);
   
   return (
     <section>
@@ -35,15 +37,15 @@ function App() {
         <Route path="/transactions" element=
           {<section className='transactions-section'>
           {/* Show All (Index) */}
-          <Transactions transactions={transactions} setTransactions={setTransactions} setToggleDetails={setToggleDetails} edit={edit} setEdit={setEdit}/>
+          <Transactions transactions={transactions} setTransactions={setTransactions} setToggleDetails={setToggleDetails} edit={edit} setEdit={setEdit} trigger={trigger}/>
           {/* Form on same view as index */}
-            <div>
+            {/* <div>
               {!toggleForm && 
               <button onClick={() => setToggleForm(true)}>
                 Add New Transaction
               </button>}
-              { (edit.show || toggleForm) && <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} /> }
-            </div>
+              { (edit.show || toggleForm) && <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger} /> }
+            </div> */}
           <Totals transactions={transactions}/>
           </section>
       }/>
@@ -51,9 +53,9 @@ function App() {
         {/* Show One Route*/}
         <Route path="/transactions/:id" element={<TransactionDetails toggleDetails={toggleDetails}/>}/>
         {/* Edit One Route */}
-        <Route path="edit/transactions/:id" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit}       setEdit={setEdit} transactions={transactions}/>}/>
+        <Route path="/edit/:id" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>}/>
         {/* Create New Route */}
-        <Route path="new/transactions/" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions}/>}/>
+        <Route path="/new" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>}/>
       </Routes>
     </section>
   )

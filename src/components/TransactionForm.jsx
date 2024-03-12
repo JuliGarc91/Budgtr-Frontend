@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import "../App.css"
 
-const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transactions }) => {
+const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transactions, trigger, setTrigger }) => {
 
   const navigate = useNavigate();
+  const id = useParams;
 
     const [transaction, setTransaction]=useState({
         itemName: "",
@@ -33,7 +34,9 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
             setTransaction(data.transactions)
             setToggleForm(false);
             setEdit({ show: false, id: null });
+            setTrigger(!trigger);
           })
+          .then(() => navigate(`/transactions/${id}`))
           .catch(error => console.error('Error:', error));
       } else {
         const options = {
@@ -47,6 +50,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
             setTransaction(data.transactions)
             setToggleForm(false);
             setEdit({ show: false, id: null })
+            setTrigger(!trigger); 
           })
           .then(() => navigate(`/transactions`))
           .catch(error => console.error('Error:', error));

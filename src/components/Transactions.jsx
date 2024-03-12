@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit }) => {
+const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit, trigger }) => {
     const [show, setShow] = useState({}); // added this to give option to hide / show details of transaction
     const navigate = useNavigate();
 
@@ -30,6 +30,16 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
         navigate(`/transactions/${id}`);
     };
 
+    const navigateToEdit = (id) => {
+        navigate(`/edit/${id}`);
+        setEdit({ show: true, id })
+    };
+
+    // useEffect(()=>{
+    //     //when value of trigger changes
+    //     console.log('Trigger useEffect');
+    // },[]); 
+
   return (
     <section>
         
@@ -53,7 +63,8 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
             <button onClick={() => navigateToDetails(id)}>
                  Go To Details |
             </button>
-            <button onClick={()=> setEdit({ show: true, id })}>
+            {/* <button onClick={()=> setEdit({ show: true, id })}> */}
+            <button onClick={()=> navigateToEdit(id)}>
                  Edit Transaction |
             </button>
             <button onClick={()=>deleteTransaction(id)}className="delete-btn">
