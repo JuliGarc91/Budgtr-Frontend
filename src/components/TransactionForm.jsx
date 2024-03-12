@@ -32,7 +32,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
           .then((res) => res.json())
           .then((data) => {
             setTransaction(data.transactions)
-            setToggleForm(false);
+            // setToggleForm(false);
             setEdit({ show: false, id: null });
             setTrigger(!trigger);
           })
@@ -48,7 +48,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
           .then((res) => res.json())
           .then((data) => {
             setTransaction(data.transactions)
-            setToggleForm(false);
+            // setToggleForm(false);
             setEdit({ show: false, id: null })
             setTrigger(!trigger); 
           })
