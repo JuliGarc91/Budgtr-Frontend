@@ -16,7 +16,7 @@ const Totals = ({ transactions }) => {
         setResult(fundsLeft)
     }
   return (
-    <div>
+    <div className="totals">
           <label htmlFor="funds">
             <h3>Total Funds: $
               <input

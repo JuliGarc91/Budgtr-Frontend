@@ -32,7 +32,6 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
           .then((res) => res.json())
           .then((data) => {
             setTransaction(data.transactions)
-            // setToggleForm(false);
             setEdit({ show: true, id: null });
             setTrigger(!trigger);
           })
@@ -72,7 +71,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
     }, [edit.id]);
 
   return (
-    <section >
+    <section className='transaction-form'>
       <h3>Transaction Form:</h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="itemName">

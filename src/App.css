@@ -6,15 +6,21 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: black;
-  color: white;
+  color: rgb(255, 255, 255);
   font-family: monospace;
   font-size: 16px;
 }
 
-header {
-  background-color: rgb(106, 255, 131);
+header, h1.enter {
+  background-color: rgb(92, 255, 119);
+  color: rgb(0, 0, 0);
+  border-radius: .5rem;
+  padding: .25%, 2%, .25%, 2%;
 }
+
+/* h1.enter {
+  color: antiquewhite;
+} */
 
 nav {
   margin-bottom: 2%;
@@ -31,16 +37,28 @@ ul, li {
 }
 .transactions-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 
 a {
-  color: white;
+  color: black;
   text-decoration: none;
+  font-weight: 700;
+  border-radius: .25rem;
+  padding: .25%, 2%, .25%, 2%;
 }
-section {
-  background-color: rgba(0, 0, 0, 0.183);
-  margin: auto;
+a:hover {
+  color: rgb(92, 255, 119);
+  background-color: rgba(0, 0, 0, 0.373);
+  padding: 2%, 2%, 2%, 2%;
+}
+
+section.transactions,
+div.totals, section.transaction-form {
+  background-color: rgba(0, 0, 0, 0.373);
+  margin: 0;
+  padding: 1% 0% 3% 0%;
+  border-radius: .5rem;
 }
 form {
   margin: auto;
@@ -50,16 +68,21 @@ form {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  padding: 1% 0% 3% 0%;
 }
 
+.btn-div {
+  display: inline-flex;
+  gap: 1rem;
+}
 button {
   background-color: rgb(148, 255, 166);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-family: monospace;
   font-weight: 700;
-  margin-bottom: 1%;
+  /* margin-bottom: 1%; */
   border: none;
-  display: inline-flex;
+  border-radius: .25rem;
 }
 .delete-btn{
   background-color: rgb(255, 148, 148);

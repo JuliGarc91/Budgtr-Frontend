@@ -35,13 +35,8 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
         setEdit({ show: true, id })
     };
 
-    // useEffect(()=>{
-    //     //when value of trigger changes
-    //     console.log('Trigger useEffect');
-    // },[]); 
-
   return (
-    <section>
+    <section className="transactions">
         
         {transactions.map(({ id, itemName, amount, costPerItemInDollars, date, from, category })=>
         (
@@ -57,19 +52,20 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
                 <li>Category: {category}</li>
             </ul>
             )}
+        <div className="btn-div">
             <button onClick={()=>handleShowDetails(id)}>
-                {show[id] ? '| Hide Details |' : '| Show Details |'}
+                {show[id] ? ' Hide Details ' : ' Show Details '}
             </button>
             <button onClick={() => navigateToDetails(id)}>
-                 Go To Details |
+                 Go To Details 
             </button>
-            {/* <button onClick={()=> setEdit({ show: true, id })}> */}
             <button onClick={()=> navigateToEdit(id)}>
-                 Edit Transaction |
+                 Edit Transaction 
             </button>
             <button onClick={()=>deleteTransaction(id)}className="delete-btn">
-                 Delete |
+                 Delete 
             </button>
+        </div>
         </div>
         ))}
     </section>
