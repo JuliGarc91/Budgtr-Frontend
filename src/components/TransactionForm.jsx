@@ -32,8 +32,8 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
           .then((res) => res.json())
           .then((data) => {
             setTransaction(data.transactions)
-            setToggleForm(false);
-            setEdit({ show: true, id: id });
+            // setToggleForm(false);
+            setEdit({ show: true, id: null });
             setTrigger(!trigger);
           })
           .then(() => navigate(`/transactions/${id}`))
