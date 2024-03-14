@@ -55,7 +55,13 @@ function App() {
         {/* Edit One Route */}
         <Route path="/edit/:id" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>}/>
         {/* Create New Route */}
-        <Route path="/new" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>}/>
+        <Route path="/new" element={
+        <>
+        <h1>Add New Transaction</h1>
+        <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>
+        </>
+        }
+        />
       </Routes>
     </section>
   )

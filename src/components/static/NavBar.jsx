@@ -11,10 +11,14 @@ const NavBar = () => {
     <Header />
     <nav>
         <Link to="/">Home </Link>
-        <Link to="/transactions">| View All Transactions </Link>
         {!isEditPath && (
-          <Link to="/new">| New Transaction Form</Link>
+          <Link to="/new">
+            | Add New Transaction Form&nbsp;
+          </Link>
         )}
+        <Link to="/transactions">
+          | View All Transactions 
+        </Link>
     </nav>
     </>
   )

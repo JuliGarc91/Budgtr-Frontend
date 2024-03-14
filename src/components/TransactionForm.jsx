@@ -5,7 +5,7 @@ import "../App.css"
 const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transactions, trigger, setTrigger }) => {
 
   const navigate = useNavigate();
-  const id = useParams;
+  const {id} = useParams();
 
     const [transaction, setTransaction]=useState({
         itemName: "",
@@ -32,8 +32,8 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
           .then((res) => res.json())
           .then((data) => {
             setTransaction(data.transactions)
-            // setToggleForm(false);
-            setEdit({ show: false, id: null });
+            setToggleForm(false);
+            setEdit({ show: true, id: id });
             setTrigger(!trigger);
           })
           .then(() => navigate(`/transactions/${id}`))
@@ -48,7 +48,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
           .then((res) => res.json())
           .then((data) => {
             setTransaction(data.transactions)
-            // setToggleForm(false);
+            setToggleForm(false);
             setEdit({ show: false, id: null })
             setTrigger(!trigger); 
           })
@@ -73,7 +73,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
 
   return (
     <section >
-      <h2>Transaction Form:</h2>
+      <h3>Transaction Form:</h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="itemName">
           Item Name:

@@ -18,19 +18,20 @@ const Totals = ({ transactions }) => {
   return (
     <div>
           <label htmlFor="funds">
-            <h2>Total Funds: $
-            <input
-              type="number"
-              name="funds"
-              id="funds"
-              value={inputValue}
-              onChange={handleChange}
-            /></h2>
+            <h3>Total Funds: $
+              <input
+                type="number"
+                name="funds"
+                id="funds"
+                value={inputValue}
+                onChange={handleChange}
+              />
+            </h3>
           </label>
-        <h2>Total Amount Spent: ${totalSpent}</h2>
-        <h2 className={result > 100 ? "greenish" : result >= 0 ? "yellowish" : "reddish"}>
+        <h3>Total Amount Spent: ${totalSpent}</h3>
+        <h3 className={result > 100 ? "greenish" : result >= 0 ? "yellowish" : "reddish"}>
             Total Funds Left: ${result}
-        </h2>
+        </h3>
     </div>
   )
 }
