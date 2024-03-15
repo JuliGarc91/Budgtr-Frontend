@@ -8,6 +8,7 @@ import NavBar from './components/static/NavBar';
 import Home from './components/static/Home';
 import Totals from './components/Totals';
 import Header from './components/static/Header';
+import Footer from './components/static/Footer';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
@@ -63,6 +64,7 @@ function App() {
         />
       </Routes>
     </main>
+    <Footer />
     </>
   )
 }
