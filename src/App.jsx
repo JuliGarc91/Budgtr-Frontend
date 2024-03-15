@@ -49,7 +49,7 @@ function App() {
         {/* Edit One Route */}
         <Route path="/edit/:id" element={
         <section className='transaction-form'>
-          <h1>💳 Edit Transaction 💳</h1>
+          <h1>&nbsp;💳 Edit Transaction 💳&nbsp;</h1>
           <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>
         </section>
         }
@@ -57,7 +57,7 @@ function App() {
         {/* Create New Route */}
         <Route path="/new" element={
         <section className='transaction-form'>
-          <h1>💳 Add New Transaction 💳</h1>
+          <h1>&nbsp;💳 Add New Transaction 💳&nbsp;</h1>
           <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>
         </section>
         }
