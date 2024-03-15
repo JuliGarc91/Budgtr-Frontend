@@ -35,6 +35,10 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
         setEdit({ show: true, id })
     };
 
+    // const formatDate = (dateISOString) => {
+
+    // }
+
     // so user can see most recent transactions entered or modified
     const reversedTransactions = [...transactions].reverse();
 
@@ -50,6 +54,7 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
                 <li>
                     Total Cost: {(amount*costPerItemInDollars).toFixed(2)}
                 </li>
+                <li>Date of Transaction: {formatDate(date)}</li>
                 <li>Date of Transaction: {date}</li>
                 <li>Store: {from}</li>
                 <li>Category: {category}</li>

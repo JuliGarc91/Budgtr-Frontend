@@ -11,7 +11,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
         itemName: "",
         amount: 0,
         costPerItemInDollars: 0,
-        date: "",
+        date: "", // Date will be stored as a string in ISO 8601 format (need to format it so easily human readable)
         from: "",
         category: "",
     });
@@ -109,8 +109,9 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
         </label>
         <label htmlFor="date">
           Date:
+          {/* need to change type because backend is now actual date instead of text */}
         <input
-          type="text"
+          type="date"
           id="date"
           name="date"
           value={transaction.date}
