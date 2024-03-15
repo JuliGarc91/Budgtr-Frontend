@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import "../App.css"
-import FormatDate from '../utilities/FormatDate';
+// import FormatDate from '../utilities/FormatDate';
 
 const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transactions, trigger, setTrigger }) => {
 
@@ -25,16 +25,18 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
 
     const handleSubmit = (event) => {
       event.preventDefault();
+      const formattedTransaction = { ...transaction, date: formatDateForServer(transaction.date) }; // Format date here
+    
       if (edit.show) {
         const options = {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(transaction),
+          body: JSON.stringify(formattedTransaction),
         };
         fetch(`http://localhost:8888/transactions/${edit.id}`, options)
           .then((res) => res.json())
           .then((data) => {
-            setTransaction(data.transactions)
+            setTransaction(data.transactions);
             setEdit({ show: true, id: null });
             setTrigger(!trigger);
           })
@@ -44,20 +46,29 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
         const options = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(transaction),
+          body: JSON.stringify(formattedTransaction),
         };
         fetch('http://localhost:8888/transactions/', options)
           .then((res) => res.json())
           .then((data) => {
-            setTransaction(data.transactions)
+            setTransaction(data.transactions);
             setToggleForm(false);
-            setEdit({ show: false, id: null })
+            setEdit({ show: false, id: null });
             setTrigger(!trigger); 
           })
           .then(() => navigate(`/transactions`))
           .catch(error => console.error('Error:', error));
       }
     };
+    
+    const formatDateForServer = (dateString) => {
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    };
+    
     
     const handleCancel = () => {
       setEdit({ show:false, id: null });
@@ -117,7 +128,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
           type="date"
           id="date"
           name="date"
-          value={FormatDate(transaction.date)}
+          value={formatDateForServer(transaction.date)}
           onChange={handleChange}
           required
         />
