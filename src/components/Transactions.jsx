@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FormatDate from "../utilities/FormatDate";
 
-const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit, trigger }) => {
+const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit }) => {
     const [show, setShow] = useState({}); // added this to give option to hide / show details of transaction
     const navigate = useNavigate();
 
@@ -16,7 +16,6 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
         .then((data)=> setTransactions(data.transactions))
         .catch((error) => {
             console.error('Error deleting transaction:', error.message);
-            // Handle error (e.g., display error message to user)
         });
     };
 
@@ -52,7 +51,6 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
                     Total Cost: {(amount*costPerItemInDollars).toFixed(2)}
                 </li>
                 <li>Date of Transaction: {FormatDate(date)}</li>
-                {/* <li>Date of Transaction: {date}</li> */}
                 <li>Store: {from}</li>
                 <li>Category: {category}</li>
             </ul>
@@ -86,7 +84,7 @@ keys in data look like this:
         itemName: 'Blue Yarn',
         amount: 3,
         costPerItemInDollars: 4,
-        date: 'January 10 2024',
+        date: new Date('2024-01-10'),
         from: "Arts and Crafts Store",
         category: "textiles",
     }

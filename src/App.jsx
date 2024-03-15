@@ -16,10 +16,6 @@ function App() {
     show: false,
     id: null
   });
-  const [toggleForm, setToggleForm] = useState({
-    show: false,
-    id: null
-  });
   const [edit, setEdit] = useState({ show: false, id: null });
   const [trigger, setTrigger] = useState(false);
 
@@ -41,7 +37,7 @@ function App() {
           {<section className='transactions-section'>
           {/* Show All (Index) */}
             <Totals transactions={transactions}/>
-            <Transactions transactions={transactions} setTransactions={setTransactions} setToggleDetails={setToggleDetails} edit={edit} setEdit={setEdit} trigger={trigger}/>
+            <Transactions transactions={transactions} setTransactions={setTransactions} setToggleDetails={setToggleDetails} edit={edit} setEdit={setEdit}/>
           </section>
         }/>
         {/* Show One Route*/}
@@ -50,7 +46,7 @@ function App() {
         <Route path="/edit/:id" element={
         <section className='transaction-form'>
           <h1>&nbsp;💳 Edit Transaction 💳&nbsp;</h1>
-          <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>
+          <TransactionForm setTransactions={setTransactions} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>
         </section>
         }
         />
@@ -58,7 +54,7 @@ function App() {
         <Route path="/new" element={
         <section className='transaction-form'>
           <h1>&nbsp;💳 Add New Transaction 💳&nbsp;</h1>
-          <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>
+          <TransactionForm setTransactions={setTransactions} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>
         </section>
         }
         />

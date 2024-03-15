@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import "../App.css"
 
-const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transactions, trigger, setTrigger }) => {
+const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger, setTrigger }) => {
 
   const navigate = useNavigate();
   const {id} = useParams();
@@ -22,6 +22,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
     
     const handleSubmit = (event) => {
       event.preventDefault();
+
       const formattedTransaction = { ...transaction, date: formatDateForServer(transaction.date) }; // Format date here - get the data and date is now this (for the server to process)
     
       if (edit.id) {
@@ -36,8 +37,9 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
             setTransaction(data.transactions);
             setEdit({ id: null });
             setTrigger(!trigger);
+            navigate(`/transactions/${id}`)
           })
-          .then(() => navigate(`/transactions/${id}`))
+          // .then(() => navigate(`/transactions/${id}`))
           .catch(error => console.error('Error:', error));
       } else {
         const options = {
@@ -55,7 +57,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
           .catch(error => console.error('Error:', error));
       }
     };
-    
+
     // this is coming from form input (handleChange)
     const formatDateForServer = () => {
       if (!transaction.date) {
@@ -76,17 +78,19 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
     
     const handleCancel = () => {
       setEdit({ show:false, id: null });
-      setToggleForm(false);
     };
 
-    useEffect(()=> {
-      if (edit.show) {
-        fetch(`http://localhost:8888/transactions/${edit.id}`)
-        .then((res) => res.json())
-        .then((data)=> setTransaction(data))
-        .catch(error => console.error('Error:', error));
+    useEffect(() => {
+      if (edit.show && edit.id) {
+          fetch(`http://localhost:8888/transactions/${edit.id}`)
+              .then((res) => res.json())
+              .then((data) => {
+                  setTransaction(data);
+              })
+              .catch(error => console.error('Error:', error));
       }
-    }, [edit.id]);
+  }, [edit.show, edit.id]);
+  
 
   return (
     <section>
@@ -127,7 +131,6 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
         </label>
         <label htmlFor="date">
           Date:
-          {/* need to change type because backend is now actual date instead of text */}
         <input
           type="date"
           id="date"

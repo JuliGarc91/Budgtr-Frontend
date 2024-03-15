@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import FormatDate from "../utilities/FormatDate";
 
 const TransactionDetails = ({ toggleDetails }) => {
-    const [transaction, setTransaction]= useState();
+    const [transaction, setTransaction]= useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:8888/transactions/${toggleDetails.id}`)
-            .then(res => res.json())
-            .then(data => {
-                setTransaction(data)
-            })
-            .catch(error => console.error('Error fetching transaction:', error));
-    }, [toggleDetails.id]); // add toggle single trans id in dependency with useState in app.jsx
+        if (toggleDetails.id) {
+            fetch(`http://localhost:8888/transactions/${toggleDetails.id}`)
+                .then(res => res.json())
+                .then(data => {
+                    setTransaction(data);
+                })
+                .catch(error => console.error('Error fetching transaction:', error));
+        }
+    }, [toggleDetails.id]);    
 
     if (!transaction) return null;
 
@@ -23,7 +25,6 @@ const TransactionDetails = ({ toggleDetails }) => {
                     Total Cost: ${(transaction.amount* transaction.costPerItemInDollars)}
                 </li>
                 <li>Date of Transaction: {FormatDate(transaction.date)}</li>
-                {/* <li>Date of Transaction: {transaction.date}</li> */}
                 <li>Store: {transaction.from}</li>
                 <li>Category: {transaction.category}</li>
             </ul>
