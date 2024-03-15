@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+import {formatDate } from "../utilities/dateFormater"
 import "../App.css"
 
 const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transactions, trigger, setTrigger }) => {
@@ -114,7 +115,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
           type="date"
           id="date"
           name="date"
-          value={transaction.date}
+          value={formatDate(transaction.date)}
           onChange={handleChange}
           required
         />
