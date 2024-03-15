@@ -35,10 +35,13 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
         setEdit({ show: true, id })
     };
 
+    // so user can see most recent transactions entered or modified
+    const reversedTransactions = [...transactions].reverse();
+
   return (
     <section className="transactions">
         
-        {transactions.map(({ id, itemName, amount, costPerItemInDollars, date, from, category })=>
+        {reversedTransactions.map(({ id, itemName, amount, costPerItemInDollars, date, from, category })=>
         (
         <div key={id}>
             <h3>💸 {itemName} - price: ${costPerItemInDollars}</h3>
