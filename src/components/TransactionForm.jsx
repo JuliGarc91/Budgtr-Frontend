@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import {formatDate } from "../utilities/dateFormater"
 import "../App.css"
+import FormatDate from '../utilities/FormatDate';
 
 const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transactions, trigger, setTrigger }) => {
 
@@ -18,8 +18,10 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
     });
 
     const handleChange = (event) => {
-      setTransaction({ ...transaction, [event.target.id]: event.target.value })
-    }
+      const { id, value } = event.target;
+      // setTransaction({ ...transaction, [event.target.id]: event.target.value })
+      setTransaction({ ...transaction, [id]: value });
+    };
 
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -60,7 +62,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
     const handleCancel = () => {
       setEdit({ show:false, id: null });
       setToggleForm(false);
-    }
+    };
 
     useEffect(()=> {
       if (edit.show) {
@@ -115,7 +117,7 @@ const TransactionForm = ({ setTransactions, setToggleForm, edit, setEdit, transa
           type="date"
           id="date"
           name="date"
-          value={formatDate(transaction.date)}
+          value={FormatDate(transaction.date)}
           onChange={handleChange}
           required
         />

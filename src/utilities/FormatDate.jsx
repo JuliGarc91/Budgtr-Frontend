@@ -1,5 +1,5 @@
-const formatDate = (dateISOString) => {
+const FormatDate = (dateISOString) => {
     const date = new Date(dateISOString);
     return date.toLocaleDateString();
 }
-export default formatDate;
+export default FormatDate;

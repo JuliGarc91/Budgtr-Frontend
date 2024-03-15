@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {formatDate } from "../utilities/dateFormater"
+import FormatDate from "../utilities/FormatDate";
 
 const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit, trigger }) => {
     const [show, setShow] = useState({}); // added this to give option to hide / show details of transaction
@@ -36,11 +36,6 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
         setEdit({ show: true, id })
     };
 
-    // const formatDate = (dateISOString) => {
-    //     const date = new Date(dateISOString);
-    //     return date.toLocaleDateString();
-    // }
-
     // so user can see most recent transactions entered or modified
     const reversedTransactions = [...transactions].reverse();
 
@@ -56,7 +51,7 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
                 <li>
                     Total Cost: {(amount*costPerItemInDollars).toFixed(2)}
                 </li>
-                <li>Date of Transaction: {formatDate(date)}</li>
+                <li>Date of Transaction: {FormatDate(date)}</li>
                 <li>Store: {from}</li>
                 <li>Category: {category}</li>
             </ul>

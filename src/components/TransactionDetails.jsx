@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {formatDate } from "../utilities/dateFormater"
+import FormatDate from "../utilities/FormatDate";
 
 const TransactionDetails = ({ toggleDetails }) => {
     const [transaction, setTransaction]= useState();
@@ -11,15 +11,10 @@ const TransactionDetails = ({ toggleDetails }) => {
                 setTransaction(data)
             })
             .catch(error => console.error('Error fetching transaction:', error));
-    }, [toggleDetails.id])// add toggle single trans id in dependency with useState in app.jsx
+    }, [toggleDetails.id]); // add toggle single trans id in dependency with useState in app.jsx
 
     if (!transaction) return null;
 
-    // const formatDate = (dateISOString) => {
-    //     const date = new Date(dateISOString);
-    //     return date.toLocaleDateString();
-    // }
-    
   return (
     <section className="details">
         <h3>💸 {transaction.itemName} - price: ${transaction.costPerItemInDollars}</h3>
@@ -27,7 +22,7 @@ const TransactionDetails = ({ toggleDetails }) => {
                 <li>
                     Total Cost: ${(transaction.amount* transaction.costPerItemInDollars)}
                 </li>
-                <li>Date of Transaction: {formatDate(transaction.date)}</li>
+                <li>Date of Transaction: {FormatDate(transaction.date)}</li>
                 <li>Store: {transaction.from}</li>
                 <li>Category: {transaction.category}</li>
             </ul>
@@ -35,4 +30,4 @@ const TransactionDetails = ({ toggleDetails }) => {
   )
 }
 
-export default TransactionDetails
+export default TransactionDetails;
