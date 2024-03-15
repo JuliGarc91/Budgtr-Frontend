@@ -7,6 +7,7 @@ import TransactionForm from './components/TransactionForm';
 import NavBar from './components/static/NavBar';
 import Home from './components/static/Home';
 import Totals from './components/Totals';
+import Header from './components/static/Header';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
@@ -29,7 +30,9 @@ function App() {
   },[trigger]);
   
   return (
-    <section>
+    <>
+    <Header />
+    <main>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home transactions={transactions}/>}/>
@@ -43,17 +46,24 @@ function App() {
         {/* Show One Route*/}
         <Route path="/transactions/:id" element={<TransactionDetails toggleDetails={toggleDetails}/>}/>
         {/* Edit One Route */}
-        <Route path="/edit/:id" element={<TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>}/>
+        <Route path="/edit/:id" element={
+        <section className='transaction-form'>
+          <h1>Edit Transaction</h1>
+          <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>
+        </section>
+        }
+        />
         {/* Create New Route */}
         <Route path="/new" element={
-        <section>
+        <section className='transaction-form'>
           <h1>Add New Transaction</h1>
           <TransactionForm setTransactions={setTransactions} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>
         </section>
         }
         />
       </Routes>
-    </section>
+    </main>
+    </>
   )
 }
 

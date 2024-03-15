@@ -8,8 +8,9 @@ const NavBar = () => {
   const isEditPath = location.pathname.startsWith('/edit/');
   return (
     <>
-    <Header />
+    {/* <Header /> */}
     <nav>
+      <h3>
         <Link to="/">Home </Link>
         {!isEditPath && (
           <Link to="/new">
@@ -19,6 +20,7 @@ const NavBar = () => {
         <Link to="/transactions">
           | View All Transactions 
         </Link>
+      </h3>
     </nav>
     </>
   )
