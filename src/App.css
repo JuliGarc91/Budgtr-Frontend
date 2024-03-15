@@ -16,6 +16,7 @@ body {
 }
 
 main {
+  margin: auto;
   text-align: center;
   width: fit-content;
   margin-bottom: 2%;
@@ -29,7 +30,7 @@ header {
   background-size: cover;
   background-position: center;
   color: rgb(92, 255, 119);
-  height: 19rem;
+  height: 20rem;
 }
 
 h2.enter-title, h2.enter-link {
@@ -63,7 +64,7 @@ ul, li {
   grid-template-columns: 1fr;
 }
 
-nav a{
+nav a {
   color: white;
   background-color: rgba(0, 0, 0, 0.693);
   text-decoration: none;
@@ -73,6 +74,8 @@ nav a{
   text-align: center;
   text-decoration: none;
   width: max-content;
+  font-family: monospace;
+  font-size: 1.75rem;
 }
 
 a:hover {
@@ -88,7 +91,7 @@ section {
 }
 
 section.transactions,
-div.totals, section.transaction-form {
+div.totals, section.transaction-form, section.details {
   background-color: rgba(0, 0, 0, 0.693);
   margin: 0;
   padding: 1% 0% 3% 0%;
@@ -142,6 +145,8 @@ input[type="number"] {
 
 footer {
   text-align: center;
+  position: relative;
+  background-color: black;
 }
 
 /* for the available funds part */

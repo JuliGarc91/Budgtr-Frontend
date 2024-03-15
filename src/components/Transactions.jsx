@@ -41,7 +41,7 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
         {transactions.map(({ id, itemName, amount, costPerItemInDollars, date, from, category })=>
         (
         <div key={id}>
-            <h3>{itemName} - price: ${costPerItemInDollars}</h3>
+            <h3>💸 {itemName} - price: ${costPerItemInDollars}</h3>
             {show[id] && (
             <ul>
                 <li>

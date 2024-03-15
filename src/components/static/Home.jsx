@@ -10,7 +10,7 @@ const Home = ({ transactions }) => {
       <Totals transactions={transactions}/>
       <Link to="/new">
             <strong>
-              <h2 className="enter-link">💰 Click here to start budgeting! 💰</h2>
+              <h2 className="enter-link">🐽 Click here to start budgeting! 🐽</h2>
             </strong>
       </Link>
     </div>

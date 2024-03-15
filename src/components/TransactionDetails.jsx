@@ -14,8 +14,8 @@ const TransactionDetails = ({ toggleDetails }) => {
 
     if (!transaction) return null;
   return (
-    <section>
-        <h3>{transaction.itemName} - price: ${transaction.costPerItemInDollars}</h3>
+    <section className="details">
+        <h3>💸 {transaction.itemName} - price: ${transaction.costPerItemInDollars}</h3>
             <ul>
                 <li>
                     Total Cost: ${(transaction.amount* transaction.costPerItemInDollars)}

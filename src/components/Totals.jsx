@@ -18,7 +18,7 @@ const Totals = ({ transactions }) => {
   return (
     <div className="totals">
           <label htmlFor="funds">
-            <h3>Total Funds: $
+            <h3>💰 Total Funds: $
               <input
                 type="number"
                 name="funds"
@@ -30,7 +30,7 @@ const Totals = ({ transactions }) => {
           </label>
         <h3>Total Amount Spent: ${totalSpent}</h3>
         <h3 className={result > 100 ? "greenish" : result >= 0 ? "yellowish" : "reddish"}>
-            Total Funds Left: ${result}
+        🐷 Total Funds Left: ${result}
         </h3>
     </div>
   )

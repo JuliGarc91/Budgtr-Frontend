@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer>
-        © Stacking-bread.co. All rights reserved. 
+        © Stacking-bread.co 💵 All rights reserved. 
     </footer>
   )
 }
