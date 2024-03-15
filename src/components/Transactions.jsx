@@ -52,6 +52,7 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
                     Total Cost: {(amount*costPerItemInDollars).toFixed(2)}
                 </li>
                 <li>Date of Transaction: {FormatDate(date)}</li>
+                {/* <li>Date of Transaction: {date}</li> */}
                 <li>Store: {from}</li>
                 <li>Category: {category}</li>
             </ul>

@@ -23,6 +23,7 @@ const TransactionDetails = ({ toggleDetails }) => {
                     Total Cost: ${(transaction.amount* transaction.costPerItemInDollars)}
                 </li>
                 <li>Date of Transaction: {FormatDate(transaction.date)}</li>
+                {/* <li>Date of Transaction: {transaction.date}</li> */}
                 <li>Store: {transaction.from}</li>
                 <li>Category: {transaction.category}</li>
             </ul>
