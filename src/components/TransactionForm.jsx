@@ -11,7 +11,7 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
         itemName: "",
         amount: 0,
         costPerItemInDollars: 0,
-        date: "", // Date will be stored as a string in ISO 8601 format (need to format it so easily human readable)
+        date: "",
         from: "",
         category: "",
     });
@@ -22,14 +22,12 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
     
     const handleSubmit = (event) => {
       event.preventDefault();
-
-      const formattedTransaction = { ...transaction, date: formatDateForServer(transaction.date) }; // Format date here - get the data and date is now this (for the server to process)
     
       if (edit.id) {
         const options = {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formattedTransaction),
+          body: JSON.stringify(transaction),
         };
         fetch(`http://localhost:8888/transactions/${edit.id}`, options)
           .then((res) => res.json())
@@ -39,13 +37,12 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
             setTrigger(!trigger);
             navigate(`/transactions/${id}`)
           })
-          // .then(() => navigate(`/transactions/${id}`))
           .catch(error => console.error('Error:', error));
       } else {
         const options = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formattedTransaction),
+          body: JSON.stringify(transaction),
         };
         fetch('http://localhost:8888/transactions/', options)
           .then((res) => res.json())
@@ -57,24 +54,6 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
           .catch(error => console.error('Error:', error));
       }
     };
-
-    // this is coming from form input (handleChange)
-    const formatDateForServer = () => {
-      if (!transaction.date) {
-        return ''; // Return an empty string if transaction date is falsy
-      }
-      console.log(transaction.date) // not falsy but not correct format (format in backend)
-      const date = new Date(transaction.date); // Parse transaction date
-      console.log(date)
-      if (isNaN(date.getTime())) {
-        console.error('Invalid date:', transaction.date);
-        return ''; // Return an empty string if date is invalid
-      }
-      const year = date.getFullYear();
-      const month = date.getMonth() + 1;
-      const day = date.getDate();
-      return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-    };    
     
     const handleCancel = () => {
       setEdit({ show:false, id: null });
@@ -91,7 +70,6 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
       }
   }, [edit.show, edit.id]);
   
-
   return (
     <section>
       <h3>Transaction Form:</h3>
@@ -135,7 +113,7 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
           type="date"
           id="date"
           name="date"
-          value={formatDateForServer(transaction.date)}
+          value={transaction.date}
           onChange={handleChange}
           required
         />

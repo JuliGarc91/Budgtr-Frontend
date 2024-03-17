@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import FormatDate from "../utilities/FormatDate";
 
 const TransactionDetails = ({ toggleDetails }) => {
     const [transaction, setTransaction]= useState(null);
@@ -24,7 +23,7 @@ const TransactionDetails = ({ toggleDetails }) => {
                 <li>
                     Total Cost: ${(transaction.amount* transaction.costPerItemInDollars)}
                 </li>
-                <li>Date of Transaction: {FormatDate(transaction.date)}</li>
+                <li>Date of Transaction: {transaction.date}</li>
                 <li>Store: {transaction.from}</li>
                 <li>Category: {transaction.category}</li>
             </ul>
