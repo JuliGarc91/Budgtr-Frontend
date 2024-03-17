@@ -35,8 +35,9 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
             setTransaction(data.transactions);
             setEdit({ id: null });
             setTrigger(!trigger);
-            navigate(`/transactions/${id}`)
+            // navigate(`/transactions/${id}`)
           })
+          .then(() => navigate(`/transactions/${id}`))
           .catch(error => console.error('Error:', error));
       } else {
         const options = {
