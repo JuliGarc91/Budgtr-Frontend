@@ -11,7 +11,6 @@ const Totals = ({ transactions }) => {
     const handleChange = (event) => {
         const userInput = +(event.target.value);
         const fundsLeft = userInput - totalSpent;
-
         setInputValue(event.target.value);
         setResult(fundsLeft)
     }
@@ -28,9 +27,10 @@ const Totals = ({ transactions }) => {
               />
             </h3>
           </label>
-        <h3>Total Amount Spent: ${totalSpent}</h3>
+        <h3>Total Amount Spent: ${totalSpent.toFixed(2)}</h3>
         <h3 className={result > 100 ? "greenish" : result >= 0 ? "yellowish" : "reddish"}>
-        🐷 Total Funds Left: ${result}
+          {console.log(result)}
+        🐷 Total Funds Left: {result==="" ? "Enter total funds" : '$'+ result.toFixed(2)}
         </h3>
     </div>
   )

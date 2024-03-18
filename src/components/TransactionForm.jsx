@@ -58,6 +58,7 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
     
     const handleCancel = () => {
       setEdit({ show:false, id: null });
+      navigate('/transactions');
     };
 
     useEffect(() => {

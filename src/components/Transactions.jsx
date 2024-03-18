@@ -34,6 +34,9 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
         setEdit({ show: true, id })
     };
 
+    const formatDate = () => {
+    }
+    
     const reversedTransactions = [...transactions].reverse();
 
   return (
@@ -46,11 +49,11 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
             {show[id] && (
             <ul>
                 <li>
-                    Total Cost: {(amount*costPerItemInDollars).toFixed(2)}
+                    <strong>Total Cost:</strong> ${(amount*costPerItemInDollars).toFixed(2)}
                 </li>
-                <li>Date of Transaction: {date}</li>
-                <li>Store: {from}</li>
-                <li>Category: {category}</li>
+                <li><strong>Date of Transaction:</strong> {date}</li>
+                <li><strong>Store:</strong> {from}</li>
+                <li><strong>Category:</strong> {category}</li>
             </ul>
             )}
         <div className="btn-div">

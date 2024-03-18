@@ -21,11 +21,11 @@ const TransactionDetails = ({ toggleDetails }) => {
         <h3>💸 {transaction.itemName} - price: ${transaction.costPerItemInDollars}</h3>
             <ul>
                 <li>
-                    Total Cost: ${(transaction.amount* transaction.costPerItemInDollars)}
+                    <strong>Total Cost:</strong> ${(transaction.amount* transaction.costPerItemInDollars).toFixed(2)}
                 </li>
-                <li>Date of Transaction: {transaction.date}</li>
-                <li>Store: {transaction.from}</li>
-                <li>Category: {transaction.category}</li>
+                <li><strong>Date of Transaction: </strong>{transaction.date}</li>
+                <li><strong>Store:</strong> {transaction.from}</li>
+                <li><strong>Category:</strong> {transaction.category}</li>
             </ul>
     </section>
   )
