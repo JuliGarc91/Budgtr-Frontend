@@ -150,6 +150,10 @@ footer {
   background-color: black;
 }
 
+h1.not-found {
+  background-color: red;
+}
+
 /* for the available funds part */
 
 .greenish {

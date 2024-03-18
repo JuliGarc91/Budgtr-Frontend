@@ -9,6 +9,7 @@ import Home from './components/static/Home';
 import Totals from './components/Totals';
 import Header from './components/static/Header';
 import Footer from './components/static/Footer';
+import NotFound from './components/static/NotFound';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
@@ -32,6 +33,7 @@ function App() {
     <main>
       <NavBar />
       <Routes>
+        <Route path="*" element={<NotFound/>}/>
         <Route path="/" element={<Home transactions={transactions}/>}/>
         <Route path="/transactions" element=
           {<section className='transactions-section'>
