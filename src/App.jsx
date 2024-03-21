@@ -11,6 +11,10 @@ import Header from './components/static/Header';
 import Footer from './components/static/Footer';
 import NotFound from './components/static/NotFound';
 
+
+const API = import.meta.env.VITE_BASE_API_URL;
+
+
 function App() {
   const [transactions, setTransactions] = useState([]);
   const [toggleDetails, setToggleDetails] = useState({
@@ -22,7 +26,7 @@ function App() {
 
   useEffect(() => {
     console.log('useEffect fetch transactions');
-    fetch("http://localhost:8888/transactions/")
+    fetch(`${API}/transactions/`)
       .then((res) => res.json())
       .then((data) => setTransactions(data.transactions));
   },[trigger]);
