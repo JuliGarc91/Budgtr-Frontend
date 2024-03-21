@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const API = import.meta.env.VITE_BASE_API_URL;
 const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit }) => {
     const [show, setShow] = useState({}); // added this to give option to hide / show details of transaction
     const navigate = useNavigate();
 
-    if (transactions.length < 0) return null; // transactions is an array of objects - if no objects then should return null
+    if (transactions.length === 0) return null; // transactions is an array of objects - if no objects then should return null
     const deleteTransaction = (id) => {
         const options = {
             method: "DELETE",
         };
-        fetch(`http://localhost:8888/transactions/${id}`, options)
+        fetch(`${API}/transactions/${id}`, options)
         .then((res) => res.json())
         .then((data)=> setTransactions(data.transactions))
         .catch((error) => {

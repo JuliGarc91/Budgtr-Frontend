@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+const API = import.meta.env.VITE_BASE_API_URL;
+
 const TransactionDetails = ({ toggleDetails }) => {
     const [transaction, setTransaction]= useState(null);
     const { id } = useParams();
 
     useEffect(() => {
         if (id) {
-            fetch(`http://localhost:8888/transactions/${id}`)
+            fetch(`${API}/transactions/${id}`)
                 .then(res => res.json())
                 .then(data => {
                     setTransaction(data);

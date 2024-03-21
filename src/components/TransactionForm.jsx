@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import "../App.css"
 
+const API = import.meta.env.VITE_BASE_API_URL;
 const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger, setTrigger }) => {
 
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(transaction),
         };
-        fetch(`http://localhost:8888/transactions/${edit.id}`, options)
+        fetch(`${API}/transactions/${edit.id}`, options)
           .then((res) => res.json())
           .then((data) => {
             setTransaction(data.transactions);
@@ -46,7 +47,7 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(transaction),
         };
-        fetch('http://localhost:8888/transactions/', options)
+        fetch(`${API}/transactions/`, options)
           .then((res) => res.json())
           .then((data) => {
             setTransaction(data.transactions);
@@ -65,7 +66,7 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
 
     useEffect(() => {
       if (edit.show && edit.id) {
-          fetch(`http://localhost:8888/transactions/${edit.id}`)
+          fetch(`${API}/transactions/${edit.id}`)
               .then((res) => res.json())
               .then((data) => {
                   setTransaction(data);
