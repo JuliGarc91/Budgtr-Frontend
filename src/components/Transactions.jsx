@@ -34,8 +34,12 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
         setEdit({ show: true, id })
     };
 
-    const formatDate = () => {
-    }
+    const formatDate = (dateString) => {
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const [year, month, day] = dateString.split('-');
+        return `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
+    };
+    
     
     const reversedTransactions = [...transactions].reverse();
 
@@ -51,7 +55,7 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
                 <li>
                     <strong>Total Cost:</strong> ${(amount*costPerItemInDollars).toFixed(2)}
                 </li>
-                <li><strong>Date of Transaction:</strong> {date}</li>
+                <li><strong>Date of Transaction:</strong> {formatDate(date)}</li>
                 <li><strong>Store:</strong> {from}</li>
                 <li><strong>Category:</strong> {category}</li>
             </ul>
