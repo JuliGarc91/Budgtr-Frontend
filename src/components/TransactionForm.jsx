@@ -23,7 +23,8 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
     const handleSubmit = (event) => {
       event.preventDefault();
     
-      if (edit.id) {
+      // if (edit.id) {
+        if (edit.id) {
         const options = {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -56,7 +57,8 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
       }
     };
     
-    const handleCancel = () => {
+    const handleCancel = (e) => {
+      e.preventDefault();
       setEdit({ show:false, id: null });
       navigate('/transactions');
     };
@@ -143,7 +145,7 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
           />
         </label>
         <button type="submit">Submit</button>
-        <button onClick={handleCancel}>Cancel</button>
+        <button onClick={(e) => handleCancel(e)}>Cancel</button>
       </form>
     </section>
   )

@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const TransactionDetails = ({ toggleDetails }) => {
     const [transaction, setTransaction]= useState(null);
+    const { id } = useParams();
 
     useEffect(() => {
-        if (toggleDetails.id) {
-            fetch(`http://localhost:8888/transactions/${toggleDetails.id}`)
+        if (id) {
+            fetch(`http://localhost:8888/transactions/${id}`)
                 .then(res => res.json())
                 .then(data => {
                     setTransaction(data);
