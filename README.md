@@ -1,6 +1,9 @@
 # Budgtr App
 
-Welcome to the Transaction Management App Budgtr! This application helps you manage your transactions efficiently. Below, you'll find a brief guide on how to use this app effectively.
+Welcome to the [Transaction Management App Budgtr](https://dynamic-marigold-e97ded.netlify.app/)! This application helps you manage your transactions efficiently. Below, you'll find a brief guide on how to use this app effectively.
+
+Access the Budgtr app [Here!]https://dynamic-marigold-e97ded.netlify.app/
+View the application Data [Here!]https://budgtr-backend-u1ul.onrender.com/transactions
 
 ## Features
 
