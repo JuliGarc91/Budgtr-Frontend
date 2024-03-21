@@ -1,4 +1,4 @@
-# Budgtr App
+# Budgtr App 🐷 
 
 Welcome to the [Transaction Management App Budgtr](https://dynamic-marigold-e97ded.netlify.app/)! This application helps you manage your transactions efficiently. Below, you'll find a brief guide on how to use this app effectively.
 
@@ -13,40 +13,6 @@ View the application Data [Here!]https://budgtr-backend-u1ul.onrender.com/transa
 - Edit an existing transaction
 - Delete a transaction
 - View total funds and funds left based on transactions
-
-## Getting Started
-
-To get started with the app, follow these steps:
-
-1. Clone the repository to your local machine.
-
-```
-git clone https://github.com/JuliGarc91/Budgtr-Frontend.git
-```
-
-2. Install dependencies using npm.
-
-```
-npm install
-```
-
-3. Start the development server.
-
-```
-npm run dev
-```
-
-4. Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to view the app.
-
-5. To view the server fork and clone this repository: https://github.com/JuliGarc91/Budgtr-backend
-
-6. Start the backend server
-
-```
-npm run dev
-```
-
-6. Open your browser and navigate to the endpoint http://localhost:8888/transactions to view all transactions
 
 ## Using the App
 
