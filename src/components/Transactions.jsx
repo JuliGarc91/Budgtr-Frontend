@@ -6,7 +6,7 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
     const [show, setShow] = useState({}); // added this to give option to hide / show details of transaction
     const navigate = useNavigate();
 
-    if (transactions.length === 0) return null; // transactions is an array of objects - if no objects then should return null
+    if (!transactions || transactions.length === 0) return null; // transactions is an array of objects - if no objects then should return null
     const deleteTransaction = (id) => {
         const options = {
             method: "DELETE",
