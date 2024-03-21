@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import "../App.css"
 
 const API = import.meta.env.VITE_BASE_API_URL;
-const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger, setTrigger }) => {
+const TransactionForm = ({ setTransactions, edit, setEdit, transactions }) => {
 
   const navigate = useNavigate();
   const {id} = useParams();
@@ -24,39 +24,40 @@ const TransactionForm = ({ setTransactions, edit, setEdit, transactions, trigger
     const handleSubmit = (event) => {
       event.preventDefault();
     
-      // if (edit.id) {
-        if (edit.id) {
-        const options = {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(transaction),
-        };
-        fetch(`${API}/transactions/${edit.id}`, options)
-          .then((res) => res.json())
-          .then((data) => {
-            setTransaction(data.transactions);
-            setEdit({ id: null });
-            setTrigger(!trigger);
-            // navigate(`/transactions/${id}`)
-          })
-          .then(() => navigate(`/transactions/${id}`))
-          .catch(error => console.error('Error:', error));
-      } else {
-        const options = {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(transaction),
-        };
-        fetch(`${API}/transactions/`, options)
-          .then((res) => res.json())
-          .then((data) => {
-            setTransaction(data.transactions);
-            setTrigger(!trigger); 
-          })
-          .then(() => navigate(`/transactions`))
-          .catch(error => console.error('Error:', error));
-      }
-    };
+    if (edit.id) {
+      const options = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(transaction),
+      };
+      fetch(`${API}/transactions/${edit.id}`, options)
+        .then((res) => res.json())
+        .then((data) => {
+          // Update the transactions array with the updated transaction
+          const updatedTransactions = transactions.map(t =>
+            t.id === data.id ? data : t
+            );
+          setTransactions(updatedTransactions);
+          setEdit({ id: null });
+          navigate(`/transactions/${id}`);
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
+      const options = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(transaction),
+      };
+      fetch(`${API}/transactions/`, options)
+        .then((res) => res.json())
+        .then((data) => {
+          // Add the new transaction to the transactions array
+          setTransactions([...transactions, data]);
+          navigate(`/transactions`);
+        })
+        .catch(error => console.error('Error:', error));
+    }
+  };
     
     const handleCancel = (e) => {
       e.preventDefault();

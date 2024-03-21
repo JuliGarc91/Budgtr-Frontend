@@ -1,10 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const API = import.meta.env.VITE_BASE_API_URL;
 const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit }) => {
     const [show, setShow] = useState({}); // added this to give option to hide / show details of transaction
     const navigate = useNavigate();
+
+    //everytime go to /transaction this useEffect runs to update it to current stuff
+    useEffect(() => {
+        fetchTransactions();
+    }, []); // Run this effect only once when the component mounts
+
+    const fetchTransactions = () => {
+        fetch(`${API}/transactions/`)
+            .then((res) => res.json())
+            .then((data) => setTransactions(data.transactions))
+            .catch((error) => {
+                console.error('Error fetching transactions:', error.message);
+            });
+    };
+
     console.log(transactions);
     if (transactions.length === 0) return null; // transactions is an array of objects - if no objects then should return null
     const deleteTransaction = (id) => {

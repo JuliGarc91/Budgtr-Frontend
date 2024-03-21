@@ -22,14 +22,24 @@ function App() {
     id: null
   });
   const [edit, setEdit] = useState({ show: false, id: null });
-  const [trigger, setTrigger] = useState(false);
+  // const [trigger, setTrigger] = useState(false);
 
+  // useEffect(() => {
+  //   console.log('useEffect fetch transactions');
+  //   fetch(`${API}/transactions/`)
+  //     .then((res) => res.json())
+  //     .then((data) => setTransactions(data.transactions));
+  // },[trigger]);
   useEffect(() => {
     console.log('useEffect fetch transactions');
     fetch(`${API}/transactions/`)
       .then((res) => res.json())
-      .then((data) => setTransactions(data.transactions));
-  },[trigger]);
+      .then((data) => {
+        setTransactions(data.transactions); // Update transactions directly
+      })
+      .catch(error => console.error('Error fetching transactions:', error));
+  }, [setTransactions]);
+  
   
   return (
     <>
@@ -52,7 +62,7 @@ function App() {
         <Route path="/edit/:id" element={
         <section className='transaction-form'>
           <h1>&nbsp;💳 Edit Transaction 💳&nbsp;</h1>
-          <TransactionForm setTransactions={setTransactions} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>
+          <TransactionForm setTransactions={setTransactions} edit={edit} setEdit={setEdit} transactions={transactions} />
         </section>
         }
         />
@@ -60,7 +70,7 @@ function App() {
         <Route path="/new" element={
         <section className='transaction-form'>
           <h1>&nbsp;💳 Add New Transaction 💳&nbsp;</h1>
-          <TransactionForm setTransactions={setTransactions} edit={edit} setEdit={setEdit} transactions={transactions} setTrigger={setTrigger} trigger={trigger}/>
+          <TransactionForm setTransactions={setTransactions} edit={edit} setEdit={setEdit} transactions={transactions} />
         </section>
         }
         />
