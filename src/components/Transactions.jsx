@@ -20,7 +20,6 @@ const Transactions = ({ transactions, setTransactions, setToggleDetails, setEdit
             });
     };
 
-    console.log(transactions);
     if (!transactions || transactions.length === 0) return null; // transactions is an array of objects - if no objects then should return null
     const deleteTransaction = (id) => {
         const options = {
