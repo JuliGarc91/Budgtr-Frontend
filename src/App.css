@@ -59,10 +59,10 @@ ul, li {
   list-style: none;
   padding: .5% 0% .5% 0%;
 }
-.transactions-section {
+/* .transactions-section {
   display: grid;
   grid-template-columns: 1fr;
-}
+} */
 
 nav a {
   color: white;
@@ -94,7 +94,7 @@ section.transactions,
 div.totals, section.transaction-form, section.details {
   background-color: rgba(0, 0, 0, 0.693);
   margin: 0;
-  padding: 1% 0% 3% 0%;
+  padding: 1% 1% 3% 0%;
   border-radius: .5rem;
 }
 form {
@@ -170,4 +170,24 @@ h1.not-found {
 
 strong {
   color: rgb(219, 212, 36);
+}
+
+/* CSS for screens smaller than 600 pixels (typical smartphones) */
+@media only screen and (max-width: 600px) {
+  main {
+    width:90%;
+  }
+  body {
+    font-size: 1rem;
+  }
+  nav a {
+    font-size: 1rem;
+  }
+  button {
+    font-size: 0.75rem;
+    padding: 1%;
+  }
+  .btn-div {
+    gap: .60rem;
+  }
 }
