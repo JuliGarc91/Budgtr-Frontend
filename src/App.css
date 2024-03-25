@@ -180,6 +180,7 @@ strong {
   body {
     font-size: 1rem;
   }
+  
   nav a {
     font-size: 1rem;
   }
@@ -189,5 +190,6 @@ strong {
   }
   .btn-div {
     gap: .60rem;
+    padding: 5%;
   }
 }
