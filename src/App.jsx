@@ -69,7 +69,7 @@ function App() {
         {/* Create New Route */}
         <Route path="/new" element={
         <section className='transaction-form'>
-          <h1>&nbsp;💳 Add New Transaction 💳&nbsp;</h1>
+          <h1>💳 Add New Transaction</h1>
           <TransactionForm setTransactions={setTransactions} edit={edit} setEdit={setEdit} transactions={transactions} />
         </section>
         }
